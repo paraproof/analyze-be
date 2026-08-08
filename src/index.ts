@@ -3,6 +3,7 @@ import "dotenv/config";
 import express from "express";
 import type { Request, Response } from "express";
 import { createJob, getJob } from "./services/jobStore.js";
+import cors from "cors";
 import type {
   VerifyRequest,
   VerifyJobCreatedResponse,
@@ -16,6 +17,8 @@ import { parseSolidityFiles } from "./verify/parser.js";
 
 const app = express();
 const PORT = 3000;
+
+app.use(cors());
 
 app.use(express.json({ limit: "10mb" }));
 
