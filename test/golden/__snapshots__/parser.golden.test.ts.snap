@@ -1,0 +1,437 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Solidity Parser Golden Test > should generate more relevant certora 1`] = `
+[
+  {
+    "contractName": "ERC20Like",
+    "externalCalls": false,
+    "fileName": "Vault.sol",
+    "functions": [
+      {
+        "dependencies": [
+          {
+            "access": "write",
+            "keys": [],
+            "variable": "owner",
+          },
+        ],
+        "emits": [],
+        "externalCalls": [],
+        "isStateModifying": true,
+        "modifiers": [],
+        "name": "constructor",
+        "parameters": [],
+        "payable": false,
+        "reads": [],
+        "requires": [],
+        "returns": [],
+        "stateMutability": "nonpayable",
+        "visibility": "default",
+        "writes": [
+          {
+            "keys": [],
+            "operation": "=",
+            "value": "msg.sender",
+            "variable": "owner",
+          },
+        ],
+      },
+      {
+        "dependencies": [
+          {
+            "access": "read",
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "balances",
+          },
+          {
+            "access": "read",
+            "keys": [],
+            "variable": "balances",
+          },
+          {
+            "access": "read",
+            "keys": [
+              "to",
+            ],
+            "variable": "balances",
+          },
+          {
+            "access": "write",
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "balances",
+          },
+          {
+            "access": "write",
+            "keys": [
+              "to",
+            ],
+            "variable": "balances",
+          },
+        ],
+        "emits": [
+          {
+            "arguments": [
+              "msg.sender",
+              "to",
+              "amount",
+            ],
+            "event": "Transfer",
+          },
+        ],
+        "externalCalls": [],
+        "isStateModifying": true,
+        "modifiers": [],
+        "name": "transfer",
+        "parameters": [
+          {
+            "name": "to",
+            "type": "address",
+          },
+          {
+            "name": "amount",
+            "type": "uint256",
+          },
+        ],
+        "payable": false,
+        "reads": [
+          {
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "balances",
+          },
+          {
+            "keys": [],
+            "variable": "balances",
+          },
+          {
+            "keys": [
+              "to",
+            ],
+            "variable": "balances",
+          },
+        ],
+        "requires": [
+          {
+            "expression": "msg.sender != address(0)",
+          },
+          {
+            "expression": "balances[msg.sender] >= amount",
+          },
+        ],
+        "returns": [
+          {
+            "name": "unnamed",
+            "type": "bool",
+          },
+        ],
+        "stateMutability": "nonpayable",
+        "visibility": "external",
+        "writes": [
+          {
+            "keys": [
+              "msg.sender",
+            ],
+            "operation": "-=",
+            "value": "amount",
+            "variable": "balances",
+          },
+          {
+            "keys": [
+              "to",
+            ],
+            "operation": "+=",
+            "value": "amount",
+            "variable": "balances",
+          },
+        ],
+      },
+      {
+        "dependencies": [
+          {
+            "access": "read",
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "allowance",
+          },
+          {
+            "access": "read",
+            "keys": [],
+            "variable": "allowance",
+          },
+          {
+            "access": "write",
+            "keys": [
+              "msg.sender",
+              "spender",
+            ],
+            "variable": "allowance",
+          },
+        ],
+        "emits": [],
+        "externalCalls": [],
+        "isStateModifying": true,
+        "modifiers": [],
+        "name": "approve",
+        "parameters": [
+          {
+            "name": "spender",
+            "type": "address",
+          },
+          {
+            "name": "amount",
+            "type": "uint256",
+          },
+        ],
+        "payable": false,
+        "reads": [
+          {
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "allowance",
+          },
+          {
+            "keys": [],
+            "variable": "allowance",
+          },
+        ],
+        "requires": [],
+        "returns": [],
+        "stateMutability": "nonpayable",
+        "visibility": "external",
+        "writes": [
+          {
+            "keys": [
+              "msg.sender",
+              "spender",
+            ],
+            "operation": "=",
+            "value": "amount",
+            "variable": "allowance",
+          },
+        ],
+      },
+    ],
+    "stateVariables": [
+      {
+        "isConstant": false,
+        "isMapping": true,
+        "name": "balances",
+        "type": "mapping(address => uint256)",
+        "visibility": "default",
+      },
+      {
+        "isConstant": false,
+        "isMapping": true,
+        "name": "allowance",
+        "type": "mapping(address => mapping(address => uint256))",
+        "visibility": "default",
+      },
+      {
+        "isConstant": false,
+        "isMapping": false,
+        "name": "owner",
+        "type": "address",
+        "visibility": "default",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Solidity Parser Golden Test > should generate stable contract summary 1`] = `
+[
+  {
+    "contractName": "Vault",
+    "externalCalls": false,
+    "fileName": "Vault.sol",
+    "functions": [
+      {
+        "dependencies": [
+          {
+            "access": "read",
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "balances",
+          },
+          {
+            "access": "read",
+            "keys": [],
+            "variable": "balances",
+          },
+          {
+            "access": "read",
+            "keys": [],
+            "variable": "totalSupply",
+          },
+          {
+            "access": "write",
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "balances",
+          },
+          {
+            "access": "write",
+            "keys": [],
+            "variable": "totalSupply",
+          },
+        ],
+        "emits": [
+          {
+            "arguments": [
+              "msg.sender",
+              "amount",
+            ],
+            "event": "Deposit",
+          },
+        ],
+        "externalCalls": [],
+        "isStateModifying": true,
+        "modifiers": [],
+        "name": "deposit",
+        "parameters": [
+          {
+            "name": "amount",
+            "type": "uint256",
+          },
+        ],
+        "payable": true,
+        "reads": [
+          {
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "balances",
+          },
+          {
+            "keys": [],
+            "variable": "balances",
+          },
+          {
+            "keys": [],
+            "variable": "totalSupply",
+          },
+        ],
+        "requires": [
+          {
+            "expression": "msg.sender != address(0)",
+          },
+        ],
+        "returns": [
+          {
+            "name": "value",
+            "type": "uint256",
+          },
+        ],
+        "stateMutability": "payable",
+        "visibility": "external",
+        "writes": [
+          {
+            "keys": [
+              "msg.sender",
+            ],
+            "operation": "+=",
+            "value": "amount",
+            "variable": "balances",
+          },
+          {
+            "keys": [],
+            "operation": "+=",
+            "value": "amount",
+            "variable": "totalSupply",
+          },
+        ],
+      },
+      {
+        "dependencies": [
+          {
+            "access": "read",
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "balances",
+          },
+          {
+            "access": "read",
+            "keys": [],
+            "variable": "balances",
+          },
+          {
+            "access": "write",
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "balances",
+          },
+        ],
+        "emits": [],
+        "externalCalls": [],
+        "isStateModifying": true,
+        "modifiers": [],
+        "name": "withdraw",
+        "parameters": [
+          {
+            "name": "amount",
+            "type": "uint256",
+          },
+        ],
+        "payable": false,
+        "reads": [
+          {
+            "keys": [
+              "msg.sender",
+            ],
+            "variable": "balances",
+          },
+          {
+            "keys": [],
+            "variable": "balances",
+          },
+        ],
+        "requires": [
+          {
+            "expression": "balances[msg.sender] >= amount",
+          },
+        ],
+        "returns": [],
+        "stateMutability": "nonpayable",
+        "visibility": "external",
+        "writes": [
+          {
+            "keys": [
+              "msg.sender",
+            ],
+            "operation": "-=",
+            "value": "amount",
+            "variable": "balances",
+          },
+        ],
+      },
+    ],
+    "stateVariables": [
+      {
+        "isConstant": false,
+        "isMapping": true,
+        "name": "balances",
+        "type": "mapping(address => uint256)",
+        "visibility": "default",
+      },
+      {
+        "isConstant": false,
+        "isMapping": false,
+        "name": "totalSupply",
+        "type": "uint256",
+        "visibility": "default",
+      },
+    ],
+  },
+]
+`;
