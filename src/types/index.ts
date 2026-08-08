@@ -209,7 +209,7 @@ export interface FunctionSummary {
 
 export interface ExternalCallSummary {
   type: "call" | "delegatecall" | "staticcall" | "transfer" | "send" | string;
-
+  valueExpression?: string;
   target?: string;
 }
 

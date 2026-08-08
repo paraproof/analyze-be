@@ -10,7 +10,6 @@ import type {
   ContractSummary,
   AnalyzeRequest,
 } from "./types/index.js";
-import { handleDeploy } from "./deploy/deployController.js";
 import { checkMonadCompatibility } from "./verify/monadChecker.js";
 import { buildConflictMatrix } from "./storage/conflictMatrix.js";
 import { parseSolidityFiles } from "./verify/parser.js";
@@ -23,8 +22,6 @@ app.use(express.json({ limit: "10mb" }));
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello from TypeScript and Express!");
 });
-
-app.post("/deploy", handleDeploy);
 
 /**
  * POST /monad/analyze — pure AST-based Monad readiness check.
@@ -53,14 +50,21 @@ app.post("/monad/analyze", async (req: Request, res: Response) => {
       [fileName || "Contract.sol"]: sourceCode,
     });
 
-    if (contracts.length === 0) {
+    if (!contracts || contracts.length === 0) {
       return res.status(400).json({
         success: false,
         error: "Failed to parse contract",
       });
     }
 
+    // Ambil contract dan pastikan ada
     const contract = contracts[0];
+    if (!contract) {
+      return res.status(400).json({
+        success: false,
+        error: "Contract definition not found",
+      });
+    }
 
     // Pillar 1: Portability (pure AST/regex, 6 anchor categories)
     const portabilityReport = checkMonadCompatibility(contract);
